@@ -129,4 +129,119 @@
 
     a {
       color: var(--accent);
-      text-decorati
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--subtext);
+      margin-top: 60px;
+    }
+
+    /* ===== TOP BAR BUTTONS ===== */
+    .top-buttons {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .toggle-sidebar {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: var(--accent);
+      color: white;
+      padding: 7px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+    }
+
+    @media (max-width: 800px) {
+      .content {
+        margin-left: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <img src="profile.jpg" alt="Foto Roby">
+    <h2>Roby Putra</h2>
+    <p>Penulis catatan harian yang kadang sendu, kadang lucu. Suka kopi, langit sore, dan keheningan malam.</p>
+
+    <div class="social-links">
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+      <a href="https://facebook.com/" target="_blank">Facebook</a>
+      <a href="https://x.com/" target="_blank">X (Twitter)</a>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content" id="content">
+    <header>
+      <h1>Catatan Roby</h1>
+      <h2>A Little Piece of Me</h2>
+    </header>
+
+    <main>
+      <div class="entry">
+        <div class="entry-date">10 November 2025</div>
+        <div class="entry-title">Hujan di Tengah Malam</div>
+        <p>Malam itu aku duduk sendiri di teras rumah...</p>
+        <a href="#">Baca selengkapnya →</a>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">5 November 2025</div>
+        <div class="entry-title">Tentang Rindu</div>
+        <p>Rindu bukan sekadar perasaan...</p>
+        <a href="#">Baca selengkapnya →</a>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 Catatan Roby. Semua tulisan adalah milik pribadi.
+    </footer>
+  </div>
+
+  <!-- TOP BUTTONS -->
+  <button class="toggle-sidebar" id="toggleSidebar">☰</button>
+
+  <div class="top-buttons">
+    <button class="btn" id="darkModeBtn">🌙/☀️</button>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById("sidebar");
+    const content = document.getElementById("content");
+    const toggleSidebar = document.getElementById("toggleSidebar");
+    const darkBtn = document.getElementById("darkModeBtn");
+
+    toggleSidebar.addEventListener("click", () => {
+      sidebar.classList.toggle("closed");
+      content.classList.toggle("expanded");
+    });
+
+    darkBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+  </script>
+
+</body>
+</html>
