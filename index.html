@@ -5,26 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catatan Roby - A Little Piece of Me</title>
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #333;
+      --subtext: #777;
+      --accent: #3ba9e0;
+      --card: #f9f9f9;
+    }
+
+    body.dark {
+      --bg: #1c1c1c;
+      --text: #eeeeee;
+      --subtext: #bbbbbb;
+      --accent: #76c7ff;
+      --card: #2a2a2a;
+    }
+
     body {
-      font-family: "Georgia", serif;
-      background-color: #ffffff;
-      color: #333;
       margin: 0;
+      font-family: "Georgia", serif;
+      background-color: var(--bg);
+      color: var(--text);
       display: flex;
       min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
     }
 
     /* ===== SIDEBAR ===== */
     .sidebar {
       width: 260px;
-      background-color: #f9f9f9;
-      border-right: 1px solid #eee;
+      background-color: var(--card);
+      border-right: 1px solid #ddd;
       padding: 30px 20px;
       box-sizing: border-box;
-      text-align: center;
       position: fixed;
       top: 0;
       bottom: 0;
+      left: 0;
+      transform: translateX(0);
+      transition: transform 0.3s;
+    }
+
+    .sidebar.closed {
+      transform: translateX(-270px);
     }
 
     .sidebar img {
@@ -32,27 +55,26 @@
       height: 100px;
       object-fit: cover;
       border-radius: 50%;
-      border: 2px solid #3ba9e0;
+      border: 2px solid var(--accent);
       margin-bottom: 15px;
     }
 
     .sidebar h2 {
+      color: var(--accent);
       font-size: 1.4em;
-      color: #3ba9e0;
-      margin: 10px 0 4px;
+      margin-bottom: 5px;
     }
 
     .sidebar p {
+      color: var(--subtext);
       font-size: 0.9em;
-      color: #666;
-      margin: 0 0 20px;
     }
 
     .social-links a {
       display: block;
-      color: #3ba9e0;
+      margin: 8px 0;
+      color: var(--accent);
       text-decoration: none;
-      margin: 5px 0;
       font-size: 0.95em;
     }
 
@@ -65,6 +87,11 @@
       margin-left: 280px;
       padding: 40px 30px;
       max-width: 700px;
+      transition: margin-left 0.3s;
+    }
+
+    .content.expanded {
+      margin-left: 20px;
     }
 
     header {
@@ -73,110 +100,33 @@
     }
 
     h1 {
-      color: #3ba9e0;
+      color: var(--accent);
       font-size: 2em;
       margin-bottom: 5px;
     }
 
     h2 {
       font-size: 1.1em;
+      color: var(--subtext);
       font-weight: normal;
-      color: #888;
-      margin-top: 0;
     }
 
     .entry {
-      border-left: 3px solid #3ba9e0;
+      border-left: 3px solid var(--accent);
       padding-left: 15px;
       margin-bottom: 35px;
     }
 
     .entry-date {
       font-size: 0.9em;
-      color: #999;
+      color: var(--subtext);
     }
 
     .entry-title {
       font-size: 1.3em;
-      color: #222;
-      margin-bottom: 5px;
-    }
-
-    .entry p {
-      margin-top: 8px;
+      color: var(--text);
     }
 
     a {
-      color: #3ba9e0;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #aaa;
-      margin-top: 60px;
-    }
-
-    @media (max-width: 800px) {
-      body {
-        flex-direction: column;
-      }
-      .sidebar {
-        position: relative;
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #eee;
-      }
-      .content {
-        margin-left: 0;
-        padding: 25px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="sidebar">
-    <img src="profile.jpg" alt="Foto Roby">
-    <h2>Roby Putra</h2>
-    <p>Penulis catatan harian yang kadang sendu, kadang lucu. Suka kopi, langit sore, dan keheningan malam.</p>
-
-    <div class="social-links">
-      <a href="https://instagram.com/" target="_blank">Instagram</a>
-      <a href="https://facebook.com/" target="_blank">Facebook</a>
-      <a href="https://x.com/" target="_blank">X (Twitter)</a>
-    </div>
-  </div>
-
-  <div class="content">
-    <header>
-      <h1>Catatan Roby</h1>
-      <h2>A Little Piece of Me</h2>
-    </header>
-
-    <main>
-      <div class="entry">
-        <div class="entry-date">10 November 2025</div>
-        <div class="entry-title">Hujan di Tengah Malam</div>
-        <p>Malam itu aku duduk sendiri di teras rumah, mendengarkan suara hujan yang jatuh satu per satu. Ada sesuatu yang menenangkan, tapi juga menyakitkan — seolah setiap tetesnya membawa kenangan yang belum selesai...</p>
-        <a href="#">Baca selengkapnya →</a>
-      </div>
-
-      <div class="entry">
-        <div class="entry-date">5 November 2025</div>
-        <div class="entry-title">Tentang Rindu</div>
-        <p>Rindu bukan sekadar perasaan, tapi perjalanan. Kadang kita menunggu sesuatu yang tak akan kembali, tapi tetap berharap...</p>
-        <a href="#">Baca selengkapnya →</a>
-      </div>
-    </main>
-
-    <footer>
-      © 2025 Catatan Roby. Semua tulisan adalah milik pribadi.
-    </footer>
-  </div>
-</body>
-</html>
+      color: var(--accent);
+      text-decorati
