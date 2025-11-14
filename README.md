@@ -1,2 +1,3 @@
 # robyputra
-tulisan lama yang ingin hidup kembali
+tulisan lama yang berusaha untuk hidup kembali
+
